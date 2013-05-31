@@ -1,5 +1,3 @@
-default_manifests_path = "manifests"
-
 Vagrant.configure("2") do |config|
   config.vm.define :repo do |repo|
     common_setup(repo)
@@ -7,8 +5,7 @@ Vagrant.configure("2") do |config|
     repo.vm.hostname = "repo"
 
     repo.vm.provision :puppet do |puppet|
-      puppet.manifests_path = default_manifests_path
-      puppet.manifest_file  = "base_repo.pp"
+      common_modules_and_default_manifest(puppet, "base_repo.pp")
     end
   end
 
@@ -18,10 +15,15 @@ Vagrant.configure("2") do |config|
     node.vm.hostname = "node"
 
     node.vm.provision :puppet do |puppet|
-      puppet.manifests_path = default_manifests_path
-      puppet.manifest_file  = "base_node.pp"
+      common_modules_and_default_manifest(puppet, "base_node.pp")
     end
   end
+end
+
+def common_modules_and_default_manifest(puppet, default_manifest)
+  puppet.module_path = "modules"
+  puppet.manifests_path = "manifests"
+  puppet.manifest_file  = default_manifest
 end
 
 def common_setup(instance)

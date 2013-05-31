@@ -29,5 +29,4 @@ class repo::server {
         notify  => Service["apache2"]
     }
 
-
 }

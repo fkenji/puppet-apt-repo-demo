@@ -7,8 +7,4 @@ file { "/usr/share/puppet/modules":
     target=> "/vagrant/modules",
 }
 
-exec { "sources-update":
-    command     => "/usr/bin/apt-get update",
-}
-
 include repo::node

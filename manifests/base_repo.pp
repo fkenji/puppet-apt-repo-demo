@@ -7,6 +7,9 @@ file { "/usr/share/puppet/modules":
     target=> "/vagrant/modules",
 }
 
-exec { "sources-update":
+exec { "repo-sources-update":
     command     => "/usr/bin/apt-get update",
+    before      => Package["reprepro"],
 }
+
+include repo::server
