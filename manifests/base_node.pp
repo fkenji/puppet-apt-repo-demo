@@ -10,3 +10,5 @@ file { "/usr/share/puppet/modules":
 exec { "sources-update":
     command     => "/usr/bin/apt-get update",
 }
+
+include repo::node
