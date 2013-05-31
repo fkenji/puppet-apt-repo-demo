@@ -1,0 +1,7 @@
+Origin: Seibzhen
+Label: seibzhen
+Suite: stable
+Codename: seibzhen
+Architectures: i386
+Components: main
+Description: Custom packages for seibzhen
