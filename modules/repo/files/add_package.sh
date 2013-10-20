@@ -2,12 +2,12 @@
 
 set -e
 
-PACKAGE_NAME=$1
+PACKAGE_PATH=$1
 
-if [ "q$PACKAGE_NAME" == "q" ]; then
-    PACKAGE_NAME="myapp_1.0_all.deb"
+if [ "q$PACKAGE_PATH" == "q" ]; then
+    PACKAGE_PATH="/vagrant/modules/repo/files/myapp_1.0_all.deb"
 fi
 
 pushd /var/apt/
-    `sudo /usr/bin/reprepro includedeb seibzhen /vagrant/modules/repo/files/$PACKAGE_NAME`
+    `sudo /usr/bin/reprepro includedeb seibzhen $PACKAGE_PATH`
 popd
